@@ -1,19 +1,18 @@
-class GravFlip:
-    def __init__(self, direction="up"):
-        self.direction = direction
+
+class GravityFlip:
+    def __init__(self):
+        self.gravity_state = "down" 
 
     def toggle_gravity(self):
-        if self.direction == "up":
-            self.direction = "down"
-        elif self.direction == "down":
-            self.direction = "up"
+        if self.gravity_state == "down":
+            self.gravity_state = "up"
         else:
-            raise ValueError("Invalid direction")
-        return self.direction
+            self.gravity_state = "down"
+        return self.gravity_state
 
-    def apply_gravity(self, object_position):
-        if self.direction == "up":
-            object_position["y"] += 1
-        elif self.direction == "down":
-            object_position["y"] -= 1
-        return object_position
+    def apply_gravity(self, position):
+        if self.gravity_state == "down":
+            position["y"] += 1
+        else:
+            position["y"] -= 1
+        return position
