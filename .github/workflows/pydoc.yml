@@ -24,10 +24,13 @@ jobs:
     - name: Generate HTML Documentation
       run: |
         python -m pip install --upgrade pip
-        python -m pydoc -w src.gravity_flip
+        for file in $(find src -name '*.py'); do
+          module=$(echo $file | sed 's|/|.|g' | sed 's|.py||g' | sed 's|src.||g')
+          python -m pydoc -w "src.$module"
+        done
 
     - name: Upload Documentation
       uses: actions/upload-artifact@v4
       with:
         name: documentation
-        path: gravity_flip.html
+        path: "*.html"
