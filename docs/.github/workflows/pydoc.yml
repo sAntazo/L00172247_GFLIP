@@ -26,13 +26,10 @@ jobs:
         python -m pydoc -w src.gravity_flip
 
     - name: Upload Documentation
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: documentation
         path: gravity_flip.html
-
-
-
 
 
 
