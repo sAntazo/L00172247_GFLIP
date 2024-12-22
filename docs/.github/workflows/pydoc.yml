@@ -14,11 +14,10 @@ jobs:
 
     steps:
     - name: Checkout Code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v2  
 
     - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
+      uses: actions/setup-python@v2  
         python-version: '3.x'
 
     - name: Generate HTML Documentation
@@ -26,11 +25,9 @@ jobs:
         python -m pydoc -w src.gravity_flip
 
     - name: Upload Documentation
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4  # Use the updated v4 of upload-artifact.
       with:
         name: documentation
         path: gravity_flip.html
-
-
 
 
